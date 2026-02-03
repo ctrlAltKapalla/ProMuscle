@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: promuscle
+    runtime: node
+    rootDir: web
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    plan: free
+    buildFilter:
+      paths:
+        - web/**
