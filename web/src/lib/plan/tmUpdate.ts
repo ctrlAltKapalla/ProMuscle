@@ -9,18 +9,13 @@ export function computeNewTMFromSingle(
   rpe: 7 | 8 | 9,
   roundingIncrementKg: number = DEFAULT_ROUNDING_INCREMENT,
 ): number {
-  // Einfache Variante (Spezifikation): new_TM = single_weight - 7.5 kg (RPE8-Annahme)
-  // Wir passen für RPE 7 bzw. 9 leicht an.
-  let candidate: number;
-
-  if (rpe === 8) {
-    candidate = singleWeightKg - 7.5;
-  } else if (rpe === 7) {
-    candidate = singleWeightKg - 10;
-  } else {
-    // rpe === 9
-    candidate = singleWeightKg - 5;
-  }
+  // Präzisere Variante: e1RM aus Single + RPE (RIR) schätzen, dann TM = 0.90 * e1RM
+  // RPE → angenommene Reps in Reserve (RIR): 7→3, 8→2, 9→1
+  // Epley: 1RM ≈ weight * (1 + reps/30), reps = 1 + RIR
+  const rir = rpe === 7 ? 3 : rpe === 8 ? 2 : 1;
+  const reps = 1 + rir;
+  const estimated1rm = singleWeightKg * (1 + reps / 30);
+  const candidate = estimated1rm * 0.9;
 
   return roundToIncrement(candidate, roundingIncrementKg);
 }
