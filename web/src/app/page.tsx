@@ -10,7 +10,6 @@ import { UserProfileForm } from "@/components/UserProfileForm";
 import { PlanSheet } from "@/components/PlanSheet";
 import { WeeklyCheckinForm } from "@/components/WeeklyCheckinForm";
 import { TmUpdateDialog } from "@/components/TmUpdateDialog";
-import { RpeTable } from "@/components/RpeTable";
 
 export default function Home() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -78,7 +77,6 @@ export default function Home() {
                 currentTmKg={plan?.meta.tmKg ?? null}
                 onNewTm={handleNewTm}
               />
-              <RpeTable />
               {lastAdjustmentInfo && (
                 <p className="text-[11px] text-zinc-600">
                   {lastAdjustmentInfo}

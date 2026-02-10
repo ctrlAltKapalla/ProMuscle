@@ -3,20 +3,20 @@ import { RTS_RPE_LEVELS, RTS_REP_RANGE, RTS_RPE_TABLE } from "@/lib/rpe/rtstable
 export function RpeTable() {
   return (
     <div className="mt-3 rounded-md border border-zinc-200 bg-white/60 p-3">
-      <div className="mb-2 text-xs font-semibold text-zinc-700">
+      <div className="mb-2 text-xs font-semibold text-zinc-900">
         RTS RPE‑Tabelle (%1RM)
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-[720px] border-collapse text-[11px]">
           <thead>
             <tr>
-              <th className="border-b border-r border-zinc-200 px-2 py-1 text-left">
+              <th className="border-b border-r border-zinc-200 px-2 py-1 text-left text-zinc-900">
                 RPE \\ Reps
               </th>
               {RTS_REP_RANGE.map((rep) => (
                 <th
                   key={rep}
-                  className="border-b border-r border-zinc-200 px-2 py-1 text-center"
+                  className="border-b border-r border-zinc-200 px-2 py-1 text-center text-zinc-900"
                 >
                   {rep}
                 </th>
@@ -26,7 +26,7 @@ export function RpeTable() {
           <tbody>
             {RTS_RPE_LEVELS.map((rpe) => (
               <tr key={rpe}>
-                <td className="border-r border-zinc-200 bg-blue-50 px-2 py-1 font-semibold">
+                <td className="border-r border-zinc-200 bg-blue-50 px-2 py-1 font-semibold text-zinc-900">
                   {rpe}
                 </td>
                 {RTS_REP_RANGE.map((rep) => {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RpeInfoModal } from "@/components/RpeInfoModal";
 import { computeNewTMFromSingle } from "@/lib/plan/tmUpdate";
 
 interface Props {
@@ -49,9 +50,15 @@ export function TmUpdateDialog({ currentTmKg, onNewTm }: Props) {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label className="text-[11px] font-medium text-zinc-800">
-            RPE (7–9)
-          </label>
+          <div className="flex items-center gap-1">
+            <label className="text-[11px] font-medium text-zinc-800">
+              RPE (7–9)
+            </label>
+            <RpeInfoModal
+              showLabel={false}
+              buttonClassName="h-5 w-5 text-[10px]"
+            />
+          </div>
           <select
             value={rpe}
             onChange={(e) =>
