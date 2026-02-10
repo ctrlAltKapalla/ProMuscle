@@ -16,8 +16,9 @@ export function computeNewTMFromSingle(
   const reps = 1 + rir;
   const estimated1rm = singleWeightKg * (1 + reps / 30);
   const candidate = estimated1rm * 0.9;
+  const capped = Math.min(candidate, singleWeightKg);
 
-  return roundToIncrement(candidate, roundingIncrementKg);
+  return roundToIncrement(capped, roundingIncrementKg);
 }
 
 export function recalculatePlanWithNewTM(args: {
